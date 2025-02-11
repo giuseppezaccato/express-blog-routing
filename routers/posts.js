@@ -1,46 +1,47 @@
+//! questo file js Contiene la logica per la gestione delle rotte relative ai post
 
 //task importo express
 const express = require("express");
 
-//task creo istanza tramite la classe epress.Router()
+//task creo istanza tramite la classe express.Router()
 const blog = express.Router()
 
-// const posts = require("./")
+//task importo i posts da data.js
 const posts = require("../public/data")
-
 
 
 //task raccolgo tutte le rotte qui(REST) facendo riferimento alla variabile sopra 
 
-//* index
-blog.get('/posts', function (req, res) {
-    // res.send('Lista delle pizze');
-    req.json(posts)
+//* index (read)
+blog.get('/', function (req, res) {
+    res.json(posts);// lista di tutti i post in formato json
 });
 
-//* show
-blog.get('/posts/:id', function (req, res) {
-    res.send('Dettagli della pizza ' + req.params.id);
+//* show (read)
+blog.get('/:id', function (req, res) {
+    // res.send('Dettagli del post ' + req.params.id);
+    console.log(req.params.id); //* "req.params.id" ==> è un modo per accedere a parametri che vengono passati nell'URL di una richiesta in maniera dinamica!
+    res.json(posts[req.params.id]);
 });
 
-//* store
-blog.post('/posts', function (req, res) {
-    res.send('Creazione nuova pizza');
+//* store (create)
+blog.post('/', function (req, res) {
+    res.send('Creazione nuovo post');
 });
 
-//* update
-blog.put('/posts/:id', function (req, res) {
-    res.send('Modifica integrale della pizza ' + req.params.id);
+//* update (update)
+blog.put('/:id', function (req, res) {
+    res.send('Modifica integrale del post ' + req.params.id);
 });
 
-//* modify
-blog.patch('/posts/:id', function (req, res) {
-    res.send('Modifica parziale della pizza ' + req.params.id);
+//* modify (update)
+blog.patch('/:id', function (req, res) {
+    res.send('Modifica parziale del post ' + req.params.id);
 });
 
-//* destroy
-blog.delete('/posts/:id', function (req, res) {
-    res.send('Eliminazione della pizza ' + req.params.id);
+//* destroy (delete)
+blog.delete('/:id', function (req, res) {
+    res.send('Eliminazione del post ' + req.params.id);
 });
 
 module.exports = blog

@@ -1,5 +1,5 @@
-
-const posts = [
+//task creo in data.js un file da esportare per accedere all'array senza dover riscrivere tutto solo importando data! 
+const data = [
     {
         titolo: "Il mio viaggio in Italia",
         contenuto: "Esplorando le meraviglie di Roma e Firenze...",
@@ -32,4 +32,4 @@ const posts = [
     }
 ];
 
-module.exports = posts
+module.exports = data
