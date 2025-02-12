@@ -21,10 +21,11 @@ blog.get('/', function (req, res) {
 blog.get('/:id', function (req, res) {
     // res.send('Dettagli del post ' + req.params.id);
     console.log(req.params.id); //* "req.params.id" ==> è un modo per accedere a parametri che vengono passati nell'URL di una richiesta in maniera dinamica!
-    res.json(posts[req.params.id]);
+    const id = req.params.id
+    res.json(posts[id]);
 });
 
-//* store (create)
+//* store (create) (piu in uso in un ambiente database)
 blog.post('/', function (req, res) {
     res.send('Creazione nuovo post');
 });
@@ -34,7 +35,7 @@ blog.put('/:id', function (req, res) {
     res.send('Modifica integrale del post ' + req.params.id);
 });
 
-//* modify (update)
+//* modify/patch (update)
 blog.patch('/:id', function (req, res) {
     res.send('Modifica parziale del post ' + req.params.id);
 });

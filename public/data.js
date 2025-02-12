@@ -1,4 +1,6 @@
 //task creo in data.js un file da esportare per accedere all'array senza dover riscrivere tutto solo importando data! 
+//FIX per convenzione in generale i data vanno in una carte come con public! (fix on next)
+
 const data = [
     {
         titolo: "Il mio viaggio in Italia",
